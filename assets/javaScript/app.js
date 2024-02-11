@@ -28,7 +28,7 @@ function renderList (){
     let html = ''
     for(let task of tasks){
         html += `<tbody>
-        <td id='bloque'>${task.id}</td>
+        <td>${task.id}</td>
         <td>${task.name}</td>
         <td><input type='checkbox' id='checkbox' onclick='checkboxInput(${task.id})' ${task.completed ? 'checked': ''}></td>
         <td><button onclick='deleteTask(${task.id})'>❌</button></td>
