@@ -28,15 +28,16 @@ function renderList (){
     let html = ''
     for(let task of tasks){
         html += `<tbody>
-        <td>${task.id}</td>
+        <td id='bloque'>${task.id}</td>
         <td>${task.name}</td>
-        <td><input type='checkbox' id='checkbox' onclick='checkboxInput(${task.id})'></td>
+        <td><input type='checkbox' id='checkbox' onclick='checkboxInput(${task.id})' ${task.completed ? 'checked': ''}></td>
         <td><button onclick='deleteTask(${task.id})'>❌</button></td>
         </tbody>
         `
     }
     taskList.innerHTML = html
     totalTask.innerHTML = tasks.length
+    completedTasks.innerHTML = tasks.filter(task => task.completed === true).length
 }
 renderList ()
 
@@ -56,7 +57,7 @@ function checkboxInput(id){
     }else{
         tasks[index].completed = false
     }
-    completedTasks.innerHTML = tasks.filter(task => task.completed === true).length
+    renderList()
 }
 
 function deleteTask (id){
